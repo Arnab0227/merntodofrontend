@@ -8,6 +8,6 @@
       font-style: normal;
       font-weight: 800;
       font-display: swap;
-      src: url(/Users/roger/webDev/nodes/todolist/frontend/src/fonts/nothing-font-5x7.woff2) format('woff2');
+      src: url(./fonts/nothing-font-5x7.woff2) format('woff2');
     }
   }
