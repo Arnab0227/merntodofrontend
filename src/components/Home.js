@@ -1,10 +1,17 @@
-import React from 'react'
+import React from "react";
 
-export default function Home() {
-    const words = ["TODO", "LIST", "APP"];
-    const delays = [0, 0.3, 0.6];
+export default function Home({ helmet, navigate, isAuthenticated }) {
+  const words = ["TODO", "LIST", "APP"];
+  const delays = [0, 0.3, 0.6];
+
+  const handleClick = () => {
+    navigate("/todos");
+  };
+
   return (
     <div>
+      {helmet}
+
       <div className="flex justify-center pt-10">
         <div className="flex justify-center pt-10">
           {words.map((word, index) => (
@@ -26,9 +33,22 @@ export default function Home() {
           to my dedication and expertise in delivering efficient solutions.
         </div>
       </div>
-      <div className="text-slate-400 flex justify-end mr-10 mt-36 animate-pulse">
-        Sign up if you are a first-time visitor; normally, login.
-      </div>
+
+      {isAuthenticated ? (
+        <div className="pt-16 flex items-center justify-center text-center text-xl cursor-pointer">
+          <button
+            className="border-2 border-black px-3 py-2 rounded-lg bg-black text-white hover:bg-white hover:text-black shadow-xl"
+            onClick={handleClick}
+          >
+            {" "}
+            Go To the Todos page{" "}
+          </button>{" "}
+        </div>
+      ) : (
+        <div className="text-slate-400 flex justify-end mr-10 mt-36 animate-pulse">
+          Sign up if you are a first-time visitor; normally, login.
+        </div>
+      )}
     </div>
-  )
+  );
 }

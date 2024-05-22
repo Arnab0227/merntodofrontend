@@ -6,13 +6,15 @@ import Signup from './components/Signup';
 import Todo from './components/Todo';
 import PrivateComonent from './components/PrivateComonent';
 import Home from './components/Home';
+import {Helmet} from 'react-helmet'
 
 export default function App() {
     
     const [token, setToken] = useState('');
     const [username, setUsername] = useState('');
     const navigate = useNavigate();
-    
+    const auth = JSON.parse(localStorage.getItem("user"));
+    const isAuthenticated = auth && auth.token;
 
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('user'));
@@ -36,19 +38,40 @@ export default function App() {
         setToken('');
         navigate('/');
     };
+    const titleHomepage = (
+        <Helmet>
+            <title>Todos App</title>
+        </Helmet>
+    )
+    const titleLogin = (
+        <Helmet>
+            <title>Login</title>
+        </Helmet>
+    )
+    const titleSignup = (
+        <Helmet>
+            <title>Signup</title>
+        </Helmet>
+    )
+    const titleTodos = (
+        <Helmet>
+            <title>Todos</title>
+        </Helmet>
+    )
+    
 
     return (
         
         <div className='font-nothing'>
-             <Nav  handleLogout={handleLogout} username={username}
+             <Nav  handleLogout={handleLogout} username={username} navigate = {navigate} isAuthenticated={isAuthenticated}
             /> 
             <Routes>
                 <Route element= {<PrivateComonent />}>
-                    <Route path='/todos' element={<Todo token={token} />} />
+                    <Route path='/todos' element={<Todo token={token} helmet={titleTodos} />} />
                 </Route>
-                    <Route path='/login' element={<Login handleLogin={handleLogin} />} />
-                    <Route path='/signup' element={<Signup handleLogin={handleLogin}  />} />
-                    <Route path='/' element={<Home />}></Route>
+                    <Route path='/login' element={<Login handleLogin={handleLogin} helmet={titleLogin} />} />
+                    <Route path='/signup' element={<Signup handleLogin={handleLogin}  helmet={titleSignup} />} />
+                    <Route path='/' element={<Home helmet={titleHomepage} navigate = {navigate} isAuthenticated={isAuthenticated} />}></Route>
                 
             </Routes>
         </div>
