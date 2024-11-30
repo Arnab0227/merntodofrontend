@@ -50,7 +50,7 @@ export default function Home({ helmet, navigate, isAuthenticated }) {
         </div>
       )}
         <div className="text-slate-400 flex justify-center mt-24 animate-pulse">
-          I am using a free tier, it will cold start, wait for a while initially.
+          I am using a free tier, it will cold start, wait for a while initially after login/signup.
         </div>
     </div>
   );
