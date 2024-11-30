@@ -45,11 +45,11 @@ export default function Home({ helmet, navigate, isAuthenticated }) {
           </button>{" "}
         </div>
       ) : (
-        <div className="text-slate-400 flex justify-center mr-10 mt-36 animate-pulse">
+        <div className="text-slate-400 flex justify-center mt-36 animate-pulse">
           Sign up if you are a first-time visitor; normally, login.
         </div>
       )}
-        <div className="text-slate-400 flex justify-center mr-10 mt-36 animate-pulse">
+        <div className="text-slate-400 flex justify-center mt-24 animate-pulse">
           I am using a free tier, it will cold start, wait for a while initially.
         </div>
     </div>
